@@ -9,9 +9,9 @@ Human::Human(sf::Keyboard::Key upKey, sf::Keyboard::Key downKey)
 sf::Vector2f Human::getMoveVector() {
   sf::Vector2f moveVector(0.f, 0.f);
   if(sf::Keyboard::isKeyPressed(mUpKey))
-    moveVector.y += 5;
-  if(sf::Keyboard::isKeyPressed(mDownKey))
     moveVector.y -= 5;
+  if(sf::Keyboard::isKeyPressed(mDownKey))
+    moveVector.y += 5;
   return moveVector;
 }
 
