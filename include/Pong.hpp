@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <Paddle.hpp>
 #include <Ball.hpp>
+#include <Human.hpp>
 
 class Pong {
 

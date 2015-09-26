@@ -5,8 +5,10 @@
 #include <SFML/Graphics.hpp>
 #include <Ball.hpp>
 #include <Entity.hpp>
+#include <Strategy.hpp>
+#include <Human.hpp>
 
-class Paddle : public Entity {
+class Paddle : public Entity{
 
   //FIELDS//
 
@@ -16,12 +18,12 @@ private:
   //METHODS
   
 public: 
-  Paddle(sf::Vector2f position, sf::Vector2f sides = sf::Vector2f(30.f, 100.f));
+  Paddle(sf::Vector2f position, sf::Vector2f sides, Human strategy);
   bool touchesTheBall(Ball& ball) const;
   virtual void update(sf::Time dt);
   
 private:
-  
+  Human mStrategy;
 };
   
 

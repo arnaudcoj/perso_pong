@@ -10,7 +10,7 @@ LIBS=-lsfml-window -lsfml-graphics -lsfml-system
 _DEPS = 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Entity.o Paddle.o Ball.o
+_OBJ = Entity.o Paddle.o Ball.o Strategy.o Human.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 .PHONY: clean Pong execute

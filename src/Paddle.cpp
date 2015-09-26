@@ -1,7 +1,8 @@
 #include <Paddle.hpp>
 
-Paddle::Paddle(sf::Vector2f position, sf::Vector2f sides)
+Paddle::Paddle(sf::Vector2f position, sf::Vector2f sides, Human strategy)
   : Entity(position, sides)
+  , mStrategy(strategy)
 {
 }
 
@@ -10,5 +11,6 @@ bool Paddle::touchesTheBall(Ball& ball) const {
 }
 
 void Paddle::update(sf::Time dt) {
-  //to be implemented 
+  sf::Vector2f moveVector = mStrategy.getMoveVector();
+  move(moveVector);
 }

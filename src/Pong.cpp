@@ -12,13 +12,13 @@ int main () {
 }
 
 Pong::Pong()
-  : mWindow(sf::VideoMode(800, 600), "SFML works!", sf::Style::Titlebar | sf::Style::Close)
+  : mWindow(sf::VideoMode(800, 600), "Pong", sf::Style::Titlebar | sf::Style::Close)
   , mFont()
   , mStatisticsText()
   , mStatisticsFramesCounter(0)
   , mStatisticsFrameTimer()
-  , mLeftPaddle(sf::Vector2f(mWindow.getSize().x * 0.1, mWindow.getSize().y * 0.5), sf::Vector2f(mWindow.getSize().x * 0.03, mWindow.getSize().y * 0.2))
-  , mRightPaddle(sf::Vector2f(mWindow.getSize().x * 0.9, mWindow.getSize().y * 0.5), sf::Vector2f(mWindow.getSize().x * 0.03, mWindow.getSize().y * 0.2))
+  , mLeftPaddle(sf::Vector2f(mWindow.getSize().x * 0.1, mWindow.getSize().y * 0.5), sf::Vector2f(mWindow.getSize().x * 0.03, mWindow.getSize().y * 0.2), Human(sf::Keyboard::A, sf::Keyboard::Q))
+  , mRightPaddle(sf::Vector2f(mWindow.getSize().x * 0.9, mWindow.getSize().y * 0.5), sf::Vector2f(mWindow.getSize().x * 0.03, mWindow.getSize().y * 0.2), Human(sf::Keyboard::Up, sf::Keyboard::Down))
   , mBall(sf::Vector2f(mWindow.getSize().x * 0.5, mWindow.getSize().y * 0.5), sf::Vector2f(mWindow.getSize().y * 0.02, mWindow.getSize().y * 0.02))
 {
   mFont.loadFromFile("resources/Vdj.ttf");
@@ -55,11 +55,10 @@ void Pong::update(sf::Time dt) {
     {
       if (event.type == sf::Event::Closed)
 	mWindow.close();
-
-      mBall.update(dt);
-      mLeftPaddle.update(dt);
-      mRightPaddle.update(dt);
     }
+  mBall.update(dt);
+  mLeftPaddle.update(dt);
+  mRightPaddle.update(dt);
 }
 
 void Pong::draw() {
