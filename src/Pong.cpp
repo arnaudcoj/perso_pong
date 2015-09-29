@@ -56,10 +56,14 @@ void Pong::update(sf::Time dt) {
       if (event.type == sf::Event::Closed)
 	mWindow.close();
     }
-  mBall.update(dt);
+
   mLeftPaddle.update(dt);
+  mLeftPaddle.correctPaddlePosition(mWindow.getDefaultView());
   mRightPaddle.update(dt);
+  mRightPaddle.correctPaddlePosition(mWindow.getDefaultView());
+  mBall.update(dt);
 }
+
 
 void Pong::draw() {
   mWindow.clear();

@@ -21,6 +21,7 @@ public:
   Paddle(sf::Vector2f position, sf::Vector2f sides, Human strategy);
   bool touchesTheBall(Ball& ball) const;
   virtual void update(sf::Time dt);
+  void correctPaddlePosition(sf::View worldView);
   
 private:
   Human mStrategy;
