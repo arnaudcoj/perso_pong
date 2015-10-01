@@ -11,6 +11,8 @@ public:
   
 private: 
   sf::RectangleShape mSprite;
+  sf::Vector2f mSize;
+
   //METHODS
   
 public: 
@@ -21,8 +23,8 @@ public:
   sf::Vector2f getPosition();
   sf::Vector2f getSize();
   void setPosition(sf::Vector2f position);
+  
 private:
-  sf::Vector2f mSize;
   
 };
   

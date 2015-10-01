@@ -62,6 +62,7 @@ void Pong::update(sf::Time dt) {
   mRightPaddle.update(dt);
   mRightPaddle.correctPaddlePosition(mWindow.getDefaultView());
   mBall.update(dt);
+  mBall.correctPosition(mWindow.getDefaultView());
 }
 
 

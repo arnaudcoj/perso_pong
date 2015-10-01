@@ -24,7 +24,9 @@ public:
   void changeDirection(sf::Vector2f directionVector);
   void accelerate(float acceleration);
   void decelerate(float deceleration);
-    
+  void correctPosition(sf::View worldView);
+  sf::Vector2f getDirection();
+  
 private:
   
 };
