@@ -28,3 +28,7 @@ sf::Vector2f Entity::getSize() {
 void Entity::setPosition(sf::Vector2f position) {
   mSprite.setPosition(position);
 }
+
+sf::FloatRect Entity::getBoundaries() const {
+  return mSprite.getGlobalBounds();
+}

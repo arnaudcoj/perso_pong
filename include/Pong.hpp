@@ -40,7 +40,7 @@ private:
   void display();
   void updateStatistics(sf::Time elapsedTime);
   void drawStatistics();
-
+  bool handleCollision(Ball& ball, Paddle& paddle);
 };
   
 #endif //PONG_HPP

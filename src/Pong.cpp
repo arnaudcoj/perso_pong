@@ -57,10 +57,14 @@ void Pong::update(sf::Time dt) {
 	mWindow.close();
     }
 
-  mLeftPaddle.update(dt);
+  if(!handleCollision(mBall, mLeftPaddle))
+    mLeftPaddle.update(dt);
   mLeftPaddle.correctPaddlePosition(mWindow.getDefaultView());
-  mRightPaddle.update(dt);
+
+  if(!handleCollision(mBall, mRightPaddle))
+    mRightPaddle.update(dt);
   mRightPaddle.correctPaddlePosition(mWindow.getDefaultView());
+  
   mBall.update(dt);
   mBall.correctPosition(mWindow.getDefaultView());
 }
@@ -92,4 +96,20 @@ void Pong::updateStatistics(sf::Time elapsedTime) {
     mStatisticsFrameTimer -= sf::seconds(1);
     mStatisticsFramesCounter = 0;
   }
+}
+
+bool Pong::handleCollision(Ball& ball, Paddle& paddle) {
+  sf::FloatRect ballBounds = ball.getBoundaries();
+  sf::FloatRect paddleBounds = paddle.getBoundaries();
+  if(ballBounds.intersects(paddleBounds)) {
+    sf::Vector2f ballPosition = ball.getPosition();
+    sf::Vector2f ballDirection = ball.getDirection();
+    if(ballPosition.x <= paddleBounds.left || ballPosition.x >= paddleBounds.left + paddleBounds.width)
+      ballDirection.x = -ballDirection.x;
+    if(ballPosition.y <= paddleBounds.top || ballPosition.y >= paddleBounds.top + paddleBounds.height)
+      ballDirection.y = -ballDirection.y;
+    ball.changeDirection(ballDirection);
+    return true;
+  }
+  return false;
 }

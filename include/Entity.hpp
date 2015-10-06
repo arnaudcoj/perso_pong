@@ -23,7 +23,7 @@ public:
   sf::Vector2f getPosition();
   sf::Vector2f getSize();
   void setPosition(sf::Vector2f position);
-  
+  sf::FloatRect getBoundaries() const;
 private:
   
 };

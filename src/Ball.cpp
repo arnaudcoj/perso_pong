@@ -2,7 +2,7 @@
 
 Ball::Ball(sf::Vector2f position, sf::Vector2f sides)
   : Entity(position, sides)
-  , mDirectionVector(0.2f, 1.f)
+  , mDirectionVector(1.f, 1.f)
   , mSpeed(350)
 {
 }
@@ -48,6 +48,11 @@ void Ball::correctPosition(sf::View worldView) {
     direction.y = -direction.y;
   }
 
+  if(position.x < viewBoundaries.left || position.x > viewBoundaries.left + viewBoundaries.width) {
+    position.x = viewBoundaries.width / 2;
+    position.y = viewBoundaries.height / 2;
+  }
+  
   setPosition(position);
   changeDirection(direction);
 }
